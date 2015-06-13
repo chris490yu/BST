@@ -1,0 +1,69 @@
+public class CreateBST {
+	TreeNode root;
+	
+	public CreateBST(char[] c){
+		for(char m:c){
+			insert(m);
+		}
+	}
+	
+	public void insert(char item) {
+        if (root == null) {
+            root = new TreeNode(item);
+            return;
+        }
+
+        TreeNode node = root;
+        while (true) {
+            if (item < node.val) {
+                if (node.left == null) {
+                    node.left = new TreeNode(item);
+                    break;
+                }
+                node = node.left;
+            } else {
+                if (node.right == null) {
+                    node.right = new TreeNode(item);
+                    break;
+                }
+                node = node.right;
+            }
+        }
+    }
+
+
+
+    public void inorder(TreeNode root){
+	    if(root==null)return;
+	    inorder(root.left);
+	    System.out.println(root.val);
+	    inorder(root.right);	
+    }
+
+    private class TreeNode{
+	
+	    TreeNode left;
+	    TreeNode right;
+	    char val;
+	
+	    public TreeNode(char val){
+		    this.val=val;
+		    this.left=null;
+		    this.right=null;
+	    }
+    }
+
+    public static void main(String args[]){
+	    
+	    char[] c=new char[5];
+	    c[0]='c';
+	    c[1]='g';
+	    c[2]='a';
+	    c[3]='z';
+	    c[4]='m';
+	    CreateBST a = new CreateBST(c);
+
+	    a.inorder(a.root);    
+	}
+
+}
