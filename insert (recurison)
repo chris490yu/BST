@@ -1,0 +1,59 @@
+public class test {
+	TreeNode root;
+
+    public TreeNode insert(char c,TreeNode root){
+    	
+	    if(root==null){
+	    root=new TreeNode(c);
+	    if(this.root==null){    	
+		    this.root=root;
+	    
+	       }
+	    }	
+	    else{	    	
+		    if(c<root.val){
+		        root.left=insert(c,root.left);
+		    }
+		    else if(c>root.val){
+			    root.right=insert(c,root.right);
+		    }
+	    }	
+	    return root;	
+   }
+
+    public void inorder(TreeNode root){
+	    if(root==null)return;
+	    inorder(root.left);
+	    System.out.println(root.val);
+	    inorder(root.right);	
+    }
+
+    private class TreeNode{
+	
+	    TreeNode left;
+	    TreeNode right;
+	    char val;
+	
+	    public TreeNode(char val){
+		    this.val=val;
+		    this.left=null;
+		    this.right=null;
+	    }
+    }
+
+    public static void main(String args[]){
+	    test a = new test();
+	    char[] c=new char[5];
+	    c[0]='c';
+	    c[1]='g';
+	    c[2]='a';
+	    c[3]='z';
+	    c[4]='m';
+	
+	    for(char m:c){
+		    a.insert(m, a.root);
+	    }
+	    a.inorder(a.root);    
+	}
+
+}
